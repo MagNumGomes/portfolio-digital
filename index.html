@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de João Vítor Góes Gomes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-light: #60ad5e;
+            --primary-dark: #005005;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-light: #f8f9fa;
+            --bg-dark: #263238;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            gap: 3rem;
+            z-index: 2;
+        }
+
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+            animation: fadeInScale 1s ease-out forwards 0.2s;
+            transition: var(--transition);
+        }
+
+        .profile-photo:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            animation-delay: 0.3s;
+        }
+
+        .terminal-text {
+            position: relative;
+            display: inline-block;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            animation-delay: 0.5s;
+            min-height: 2rem;
+        }
+        
+        .terminal-text::after {
+            content: '|';
+            position: absolute;
+            right: -8px;
+            animation: blink 0.7s infinite;
+            color: var(--primary-light);
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        header p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            animation-delay: 0.7s;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23ffffff"><circle cx="25" cy="25" r="3"/><circle cx="75" cy="75" r="3"/><circle cx="75" cy="25" r="3"/><circle cx="25" cy="75" r="3"/></svg>');
+            background-size: 50px;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transform: translateY(-100%);
+            animation: slideDown 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards 1s;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            color: var(--text-light);
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--text-light);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .hamburger:hover {
+            transform: scale(1.1);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUpSection 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 1.2s; }
+        section:nth-child(2) { animation-delay: 1.4s; }
+        section:nth-child(3) { animation-delay: 1.6s; }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .section-title:hover {
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: center;
+            animation: scaleIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards 0.5s;
+            transition: var(--transition);
+        }
+
+        .section-title:hover::after {
+            background-color: var(--primary-dark);
+            width: 100px;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUpCard 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 1.4s; }
+        .project-card:nth-child(2) { animation-delay: 1.6s; }
+        .project-card:nth-child(3) { animation-delay: 1.8s; }
+        .project-card:nth-child(4) { animation-delay: 2.0s; }
+
+        .project-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-header {
+            background-color: var(--primary-dark);
+        }
+
+        .project-header h3 {
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-header h3 {
+            transform: translateX(5px);
+        }
+
+        .project-period {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-period {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(5px);
+        }
+
+        .project-link i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .project-link:hover i {
+            transform: translateX(3px);
+        }
+
+        .technologies {
+            margin: 1.5rem 0;
+        }
+
+        .tech-title, .contrib-title, .skills-title {
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .tech-title,
+        .project-card:hover .contrib-title,
+        .project-card:hover .skills-title {
+            color: var(--primary-color);
+            transform: translateX(3px);
+        }
+
+        .tech-tags, .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag, .skill-tag {
+            background-color: var(--primary-light);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            transform: scale(0);
+            animation: scaleIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover, .skill-tag:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.05) !important;
+        }
+
+        .tech-tag:nth-child(1) { animation-delay: 1.6s; }
+        .tech-tag:nth-child(2) { animation-delay: 1.7s; }
+        .tech-tag:nth-child(3) { animation-delay: 1.8s; }
+        .tech-tag:nth-child(4) { animation-delay: 1.9s; }
+        .skill-tag:nth-child(1) { animation-delay: 1.8s; }
+        .skill-tag:nth-child(2) { animation-delay: 1.9s; }
+        .skill-tag:nth-child(3) { animation-delay: 2.0s; }
+
+        .knowledge-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .knowledge-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px) rotate(3deg);
+            animation: fadeInUpRotate 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .knowledge-card:hover {
+            transform: translateY(-5px) rotate(0deg) !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .knowledge-card:nth-child(1) { animation-delay: 1.6s; }
+        .knowledge-card:nth-child(2) { animation-delay: 1.7s; }
+        .knowledge-card:nth-child(3) { animation-delay: 1.8s; }
+        .knowledge-card:nth-child(4) { animation-delay: 1.9s; }
+        .knowledge-card:nth-child(5) { animation-delay: 2.0s; }
+        .knowledge-card:nth-child(6) { animation-delay: 2.1s; }
+
+        .knowledge-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .knowledge-card:hover .knowledge-icon {
+            transform: scale(1.1);
+            color: var(--primary-dark);
+        }
+
+        .knowledge-card h3 {
+            transition: var(--transition);
+        }
+
+        .knowledge-card:hover h3 {
+            color: var(--primary-color);
+        }
+
+        .contacts-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+            opacity: 0;
+            transform: scale(0);
+            animation: scaleIn 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+        }
+
+        .contact-link:nth-child(1) { animation-delay: 1.8s; }
+        .contact-link:nth-child(2) { animation-delay: 1.9s; }
+
+        .contact-link:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1) !important;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s cubic-bezier(0.22, 0.61, 0.36, 1) forwards 2s;
+        }
+
+        footer p {
+            transition: var(--transition);
+        }
+
+        footer:hover p {
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUpSection {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUpCard {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUpRotate {
+            from {
+                opacity: 0;
+                transform: translateY(20px) rotate(3deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-photo {
+                width: 250px;
+                height: 250px;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .terminal-text {
+                font-size: 1.5rem;
+                min-height: 1.8rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-dark);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .profile-photo {
+                width: 200px;
+                height: 200px;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <img src="/img/profile.jpg" alt="Minha Foto" class="profile-photo">
+            <div class="profile-text">
+                <h1>Olá, sou o João Vítor Góes Gomes!</h1>
+                <h2 id="terminal-text" class="terminal-text"></h2>
+                <p>Estudante de Desenvolvimento de Software Multiplataforma, Analista de Monitoramento em NOC e estas são minhas experiências como aluno na Fatec SJC.</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Portfólio</a>
+            <ul class="nav-links">
+                <li><a href="#projects">Projetos</a></li>
+                <li><a href="#knowledge">Conhecimentos</a></li>
+                <li><a href="#contact">Contatos</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <section id="projects">
+        <h2 class="section-title">Meus Projetos</h2>
+        <div class="projects-container">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Smart Farming</h3>
+                    <p class="project-period">2024-1 | Scrum Team</p>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        <p>Meu primeiro contato com programação, desenvolvido em equipe usando metodologia Scrum. Aplicação web para monitoramento de estufa inteligente que coleta e exibe dados de umidade ambiente e do solo, temperatura ambiente e volume de água.</p>
+                        <p>Como membro da equipe, participei ativamente das cerimônias Scrum (Daily, Planning, Review e Retrospective).</p>
+                    </div>
+                    <a href="https://github.com/BugBustersFatecSJC/Smart-farm" class="project-link">Ver no GitHub <i class="fas fa-external-link-alt"></i></a>
+                    
+                    <div class="technologies">
+                        <p class="tech-title">Tecnologias Utilizadas</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contributions">
+                        <p class="contrib-title">Contribuições Pessoais</p>
+                        <p>Desenvolvimento de interfaces para visualização dos dados dos sensores, participação na modelagem do banco de dados e implementação de gráficos simples para exibição das métricas.</p>
+                    </div>
+                    <br>
+                    <div class="hard-skills">
+                        <p class="skills-title">Hard Skills Desenvolvidas</p>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="soft-skills">
+                        <p class="skills-title">Soft Skills Desenvolvidas</p>
+                        <p>Trabalho em equipe colaborando eficazmente com outros iniciantes, adaptabilidade no aprendizado rápido de novas tecnologias e comunicação ativa nas cerimônias Scrum.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Inv.Sort</h3>
+                    <p class="project-period">2024-2 | Product Owner</p>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        <p>Sistema de controle de estoque desenvolvido com metodologia Scrum, onde atuei como Product Owner. A solução oferece gestão de categorias e produtos, controle de entrada e saída, análise de tendências e relatórios personalizados.</p>
+                        <p>Como PO, fui responsável pelo backlog do produto e priorização das user stories, além de mediar a comunicação entre stakeholders e equipe de desenvolvimento.</p>
+                    </div>
+                    <a href="https://github.com/BugBustersFatecSJC/inv.sort" class="project-link">Ver no GitHub <i class="fas fa-external-link-alt"></i></a>
+                    
+                    <div class="technologies">
+                        <p class="tech-title">Tecnologias Utilizadas</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Prisma</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contributions">
+                        <p class="contrib-title">Contribuições Pessoais</p>
+                        <p>Definição e priorização do backlog do produto, criação de user stories e critérios de aceitação, validação das entregas em cada sprint e mediação entre stakeholders e equipe de desenvolvimento.</p>
+                    </div>
+                    <br>
+                    <div class="hard-skills">
+                        <p class="skills-title">Hard Skills Desenvolvidas</p>
+                        <div class="skills-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Prisma</span>
+                            <span class="skill-tag">Node.js</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="soft-skills">
+                        <p class="skills-title">Soft Skills Desenvolvidas</p>
+                        <p>Gestão de produto com visão estratégica, liderança guiando a equipe para entregar valor e negociação balanceando expectativas de stakeholders.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Checkpoint</h3>
+                    <p class="project-period">2025-1 | Scrum Team</p>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        <p>Sistema de ponto eletrônico desenvolvido com Scrum em 3 sprints: Acesso do Colaborador, Acesso do Gestor/Admin e Análise e Relatórios. A solução inclui registro de ponto, cálculo automático de horas, gestão de ausências e geração de relatórios.</p>
+                    </div>
+                    <a href="https://github.com/FR0M-ZER0/checkpoint" class="project-link">Ver no GitHub <i class="fas fa-external-link-alt"></i></a>
+                    
+                    <div class="technologies">
+                        <p class="tech-title">Tecnologias Utilizadas</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java Spring Boot</span>
+                            <span class="tech-tag">React TypeScript</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contributions">
+                        <p class="contrib-title">Contribuições Pessoais</p>
+                        <p>Implementei a funcionalidade de registro de ponto, incluindo lógica de validação de horários e turnos.</p>
+                        <p>Desenvolvi o sistema de relatórios gerenciais com visualização de horas trabalhadas por período, análise de padrões de atrasos e capacidade de exportação em múltiplos formatos como PDF e CSV.</p>
+                    </div>
+                    <br>
+                    <div class="hard-skills">
+                        <p class="skills-title">Hard Skills Desenvolvidas</p>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">MongoDB</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="soft-skills">
+                        <p class="skills-title">Soft Skills Desenvolvidas</p>
+                        <p>Resiliência Técnica: Evidenciada ao superar a curva de aprendizado simultânea em Java e TypeScript através de estudo direcionado durante o projeto.</p>
+                        <p>Orientação a Detalhes: Aplicada especialmente nas regras de negócio sensíveis como cálculos de horas extras e banco de horas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>CadastraHub</h3>
+                    <p class="project-period">2025-1 | Projeto Acadêmico</p>
+                </div>
+                <div class="project-body">
+                    <div class="project-description">
+                        <p>Plataforma de cadastro de produtos desenvolvida como projeto para a disciplina Desenvolvimento Web II, em parceria com um colega. Solução focada no cadastro e gerenciamento de produtos para uma empresa que enfrentava dificuldades com processos manuais.</p>
+                        <p>Desenvolvido sem metodologia ágil, com divisão natural de tarefas entre os dois integrantes do projeto.</p>
+                    </div>
+                    <a href="https://github.com/MagNumGomes/CadastraHub" class="project-link">Ver no GitHub <i class="fas fa-external-link-alt"></i></a>
+                    
+                    <div class="technologies">
+                        <p class="tech-title">Tecnologias Utilizadas</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Prisma</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JWT</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contributions">
+                        <p class="contrib-title">Contribuições Pessoais</p>
+                        <p>Desenvolvimento do módulo de autenticação JWT e implementação das rotas CRUD para produtos. Responsável pela integração entre front-end e back-end da aplicação.</p>
+                    </div>
+                    <br>    
+                    <div class="hard-skills">
+                        <p class="skills-title">Hard Skills Desenvolvidas</p>
+                        <div class="skills-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express</span>
+                            <span class="skill-tag">JWT</span>
+                        </div>
+                    </div>
+                    <br>    
+                    <div class="soft-skills">
+                        <p class="skills-title">Soft Skills Desenvolvidas</p>
+                        <p>Colaboração em equipe reduzida, organização de tarefas sem metodologia formal e comunicação direta com um único parceiro de desenvolvimento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="knowledge">
+        <h2 class="section-title">Meus Principais Conhecimentos</h2>
+        <div class="knowledge-container">
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Observability (DevOps)</h3>
+            </div>
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Frontend</h3>
+            </div>
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3>Backend</h3>
+            </div>
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>Gestão de Projetos de TI</h3>
+            </div>
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>UX/UI</h3>
+            </div>
+            <div class="knowledge-card">
+                <div class="knowledge-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI Agents</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contatos</h2>
+        <div class="contacts-container">
+            <a href="https://github.com/MagNumGomes" class="contact-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/joaovitorgoes/" class="contact-link">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Portfólio de João Vítor Góes Gomes. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const terminalText = document.getElementById('terminal-text');
+        const textToType = "Full Stack Developer";
+        let i = 0;
+        let isDeleting = false;
+        let typingSpeed = 150;
+        let loopCount = 0;
+        const maxLoops = 3; 
+        
+        function typeTerminalText() {
+            const currentText = textToType.substring(0, i);
+            terminalText.textContent = currentText;
+            
+            if (!isDeleting && i === textToType.length) {
+                isDeleting = true;
+                typingSpeed = 700;
+            } else if (isDeleting && i === 0) {
+                isDeleting = false;
+                loopCount++;
+                typingSpeed = 150;
+                
+                if (loopCount >= maxLoops) {
+                    terminalText.textContent = textToType;
+                    terminalText.style.setProperty('--after', 'none');
+                    return;
+                }
+            }
+            
+            i = isDeleting ? i - 1 : i + 1;
+            
+            setTimeout(typeTerminalText, typingSpeed);
+        }
+        
+        setTimeout(typeTerminalText, 1000);
+
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section, .project-card, .knowledge-card, .tech-tag, .skill-tag, .contact-link').forEach(element => {
+            observer.observe(element);
+        });
+
+        document.querySelectorAll('.knowledge-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const x = e.pageX - card.offsetLeft;
+                const y = e.pageY - card.offsetTop;
+                
+                card.style.transform = `translateY(-5px) rotate3d(${y/100}, ${x/100}, 0, 5deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) rotate(0)';
+            });
+        });
+    </script>
+</body>
+</html>
